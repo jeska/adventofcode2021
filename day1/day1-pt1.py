@@ -1,15 +1,22 @@
-def main():
+def main(inf: str):
 
     increases = 0
-    with open("day1-sample.txt", "r") as input_file:
-        prev_m = int(input_file.readline())
-        for line in input_file.readlines():
-            current_m = int(line)
-            increases += 1 if current_m > prev_m else 0
-            prev_m = current_m
+    with open(inf, "r") as input_file:
+        first_depth, remaining_depths = (
+            int(input_file.readline()),
+            input_file.readlines(),
+        )
 
-    print(increases)
+    for line in remaining_depths:
+        current_depth = int(line)
+        increases += 1 if current_depth > first_depth else 0
+        first_depth = current_depth
+
+    return increases
 
 
 if __name__ == "__main__":
-    main()
+    sample_result = main("day1-sample.txt")
+    assert sample_result == 7
+    full_result = main("day1-full.txt")
+    assert full_result == 1139
