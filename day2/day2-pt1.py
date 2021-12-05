@@ -1,19 +1,24 @@
-def main():
-    hor, vert = 0, 0
+def main(inf: str):
+    horizontal, vertical = 0, 0
 
-    with open("day2-full.txt") as input_file:
+    with open(inf) as input_file:
         for line in input_file:
             cmd, units = line.split()[0], int(line.split()[1])
-            if cmd == "forward":
-                hor += units
-            elif cmd == "down":
-                vert += units
-            elif cmd == "up":
-                vert -= units
+            match cmd:
+                case "forward":
+                    horizontal += units
+                case "down":
+                    vertical += units
+                case "up":
+                    vertical -= units
 
-    print(hor, vert)
-    print(hor * vert)
+    return horizontal * vertical
 
 
 if __name__ == "__main__":
-    main()
+    sample_result = main("day2-sample.txt")
+    print(sample_result)
+    assert sample_result == 150
+    full_result = main("day2-full.txt")
+    print(full_result)
+    assert full_result == 1990000
