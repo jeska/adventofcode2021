@@ -1,13 +1,14 @@
 from dataclasses import dataclass
 
 
-def bin_to_dec(bin_num):
-    return sum(
-        [
-            2 ** (len(bin_num) - i - 1) if bin_num[i] == "1" else 0
-            for i in range(0, len(bin_num))
-        ]
-    )
+def bin_to_dec(bin_num: str) -> int:
+    match bin_num:
+        case ["0"]:
+            return 0
+        case ["1"]:
+            return 1
+        case [x, *y] as b:
+            return 2 ** (len(b) - 1) * int(x) + bin_to_dec(y)
 
 
 @dataclass
@@ -22,10 +23,10 @@ class Bit:
         return 0 if self.zeros < self.ones else 1
 
 
-def main():
+def main(inf: str):
     bits = []
 
-    with open("day3-full.txt") as input_file:
+    with open(inf) as input_file:
         for line in input_file:
             for i in range(0, len(line) - 1):
                 try:
@@ -42,11 +43,13 @@ def main():
     gamma = [str(bit.most_common()) for bit in bits]
     epsilon = [str(bit.least_common()) for bit in bits]
 
-    print(gamma, bin_to_dec(gamma))
-    print(epsilon, bin_to_dec(epsilon))
-
-    print(bin_to_dec(gamma) * bin_to_dec(epsilon))
+    return bin_to_dec(gamma) * bin_to_dec(epsilon)
 
 
 if __name__ == "__main__":
-    main()
+    sample_result = main("day3-sample.txt")
+    print(sample_result)
+    assert sample_result == 198
+    full_result = main("day3-full.txt")
+    print(full_result)
+    assert full_result == 3923414
