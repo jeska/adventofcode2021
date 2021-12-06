@@ -1,17 +1,16 @@
 def main(inf: str):
 
-    increases = 0
-    report = []
     with open(inf) as input_file:
-        report = [int(line) for line in input_file.readlines()]
+        depths = [int(line) for line in input_file.readlines()]
 
-    prev_sum = report[0] + report[1] + report[2]
-    for i in range(3, len(report)):
-        current_sum = report[i - 2] + report[i - 1] + report[i]
-        increases += 1 if current_sum > prev_sum else 0
-        prev_sum = current_sum
-
-    return increases
+    return sum(
+        [
+            1
+            for i in range(3, len(depths))
+            if (depths[i - 3] + depths[i - 2] + depths[i - 1])
+            < (depths[i - 2] + depths[i - 1] + depths[i])
+        ]
+    )
 
 
 if __name__ == "__main__":
