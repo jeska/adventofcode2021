@@ -30,4 +30,4 @@ if __name__ == "__main__":
     assert sample_result == 26
     full_result = main("day8-full.txt")
     print(full_result)
-    # assert full_result == 0
+    assert full_result == 301
