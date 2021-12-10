@@ -1,3 +1,5 @@
+# refactor me, dude!
+
 from dataclasses import dataclass
 from functools import reduce
 
