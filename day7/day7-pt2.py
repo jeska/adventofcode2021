@@ -8,9 +8,7 @@ def main(inf: str):
     for pos in unique_positions:
         # for i in crab_positions:
         # print(pos, i, abs(i - pos), sum(j for j in range(1, abs(i - pos) + 1)))
-        fuel_usage[pos] = sum(
-            [(abs(i - pos) / 2) * (abs(i - pos) + 1) for i in crab_positions]
-        )
+        fuel_usage[pos] = sum([(abs(i - pos) / 2) * (abs(i - pos) + 1) for i in crab_positions])
 
     return min(fuel_usage.values())
 

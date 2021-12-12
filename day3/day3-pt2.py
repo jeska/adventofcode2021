@@ -1,10 +1,5 @@
 def bin_to_dec(bin_num):
-    return sum(
-        [
-            2 ** (len(bin_num) - i - 1) if bin_num[i] == "1" else 0
-            for i in range(0, len(bin_num))
-        ]
-    )
+    return sum([2 ** (len(bin_num) - i - 1) if bin_num[i] == "1" else 0 for i in range(0, len(bin_num))])
 
 
 def main():

@@ -7,8 +7,7 @@ def main(inf: str):
         [
             1
             for i in range(3, len(depths))
-            if (depths[i - 3] + depths[i - 2] + depths[i - 1])
-            < (depths[i - 2] + depths[i - 1] + depths[i])
+            if (depths[i - 3] + depths[i - 2] + depths[i - 1]) < (depths[i - 2] + depths[i - 1] + depths[i])
         ]
     )
 
