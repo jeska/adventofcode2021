@@ -14,9 +14,7 @@ class LanternFish:
 
 def main(inf: str):
     with open(inf) as input_file:
-        lantern_fishies = [
-            LanternFish(internal_timer=int(i)) for i in input_file.readline().split(",")
-        ]
+        lantern_fishies = [LanternFish(internal_timer=int(i)) for i in input_file.readline().split(",")]
 
     for i in range(0, 80):
         new_fishes = []
